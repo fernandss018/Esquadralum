@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5e739f">
+  <title>Esquadralum | Acompanhamento de Esquadria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Esquadralum - início" id="brandHome">
+        <img src="assets/logo.png" alt="Esquadralum — Soluções em Esquadrias">
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button type="button" class="nav-link active" id="homeBtn">Início</button>
+        <button type="button" class="nav-link" id="loginBtn">Login</button>
+      </nav>
+    </header>
+
+    <main id="mainContent">
+      <section class="dashboard" id="dashboard" aria-label="Acompanhamento da esquadria">
+        <article class="panel identification">
+          <h2 class="panel-heading">Identificação da Esquadria</h2>
+          <div class="window-frame" aria-label="Ilustração de uma janela de correr">
+            <div class="window-inner">
+              <div class="window-pane"><span></span><span></span></div>
+              <div class="window-pane"><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="details">
+            <p><strong>Código:</strong> <span id="codeValue">EQ-001</span></p>
+            <p><strong>Tipo:</strong> <span id="typeValue">Janela de Correr</span></p>
+            <p><strong>Local:</strong> <span id="locationValue">Sala 01</span></p>
+          </div>
+          <button class="edit-details" type="button" id="editDetailsBtn">Editar identificação</button>
+        </article>
+
+        <article class="panel stages-panel">
+          <h2 class="panel-heading">Etapa Atual</h2>
+          <div class="stage-list" id="stageList">
+            <div class="stage-item completed" data-stage="0">
+              <div class="stage-marker"><span class="checkmark">✓</span><span class="stage-number">1</span></div>
+              <div class="stage-name">1. Corte</div>
+            </div>
+            <div class="stage-item current" data-stage="1">
+              <div class="stage-marker"><span class="checkmark">✓</span><span class="stage-number">2</span></div>
+              <div class="stage-name">2. Motagem</div>
+            </div>
+            <div class="stage-item" data-stage="2">
+              <div class="stage-marker"><span class="checkmark">✓</span><span class="stage-number">3</span></div>
+              <div class="stage-name">3. Acabamento</div>
+            </div>
+            <div class="stage-item" data-stage="3">
+              <div class="stage-marker"><span class="checkmark">✓</span><span class="stage-number">4</span></div>
+              <div class="stage-name">4. Revisão</div>
+            </div>
+          </div>
+          <div class="stage-actions">
+            <button type="button" class="secondary-btn" id="prevStageBtn">Etapa anterior</button>
+            <button type="button" class="primary-btn" id="nextStageBtn">Avançar etapa</button>
+          </div>
+        </article>
+
+        <div class="right-column">
+          <article class="panel status-panel">
+            <h2 class="panel-heading">Status</h2>
+            <div class="status-content">
+              <div class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">Em andamento</span></div>
+              <p><strong>Início:</strong> <span id="startDate">10/06/2025 08:30</span></p>
+              <p><strong>Responsável:</strong> <span id="responsibleValue">João Silva</span></p>
+              <div class="status-actions">
+                <button type="button" class="text-btn" id="changeStatusBtn">Alterar status</button>
+                <button type="button" class="text-btn" id="changeResponsibleBtn">Alterar responsável</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel notes-panel">
+            <h2 class="panel-heading">Observação e Impedimentos</h2>
+            <form id="noteForm" class="notes-content">
+              <label class="sr-only" for="observation">Digite aqui as observações</label>
+              <textarea id="observation" maxlength="500" placeholder="Digite aqui as observações...&#10;&#10;Ex: falta de material, ajuste necessário, etc.." required></textarea>
+              <div class="form-meta"><span id="charCount">0/500</span><span id="formHint">Registre observações da produção</span></div>
+              <button type="submit" class="register-btn">Registrar</button>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <section class="history-panel" aria-labelledby="historyTitle">
+        <div class="history-heading">
+          <h2 id="historyTitle">Registros recentes</h2>
+          <button type="button" class="text-btn" id="clearHistoryBtn">Limpar histórico</button>
+        </div>
+        <div id="historyList" class="history-list"><p class="empty-history">Nenhum registro adicionado nesta sessão.</p></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img src="assets/logo-white.png" alt="Esquadralum">
+      <div class="footer-divider"></div>
+      <div class="footer-copy"><strong>ESQUADRALUM</strong><span>Soluções em esquadrias</span><small>Controle de produção • <span id="footerYear"></span></small></div>
+    </footer>
+  </div>
+
+  <dialog id="loginDialog" class="modal">
+    <form method="dialog" id="loginForm">
+      <button class="modal-close" aria-label="Fechar" value="cancel">×</button>
+      <h2>Acesso ao sistema</h2>
+      <p class="modal-subtitle">Entre para gerenciar o acompanhamento da produção.</p>
+      <label for="username">Usuário</label>
+      <input id="username" name="username" autocomplete="username" placeholder="Digite seu usuário" required>
+      <label for="password">Senha</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
+      <p class="login-help">Demonstração local: preencha os campos para simular o acesso.</p>
+      <button class="primary-btn full-btn" type="submit" value="login">Entrar</button>
+    </form>
+  </dialog>
+
+  <dialog id="detailsDialog" class="modal">
+    <form method="dialog" id="detailsForm">
+      <button class="modal-close" aria-label="Fechar" value="cancel">×</button>
+      <h2>Identificação da esquadria</h2>
+      <label for="editCode">Código</label><input id="editCode" required maxlength="20" value="EQ-001">
+      <label for="editType">Tipo</label>
+      <select id="editType"><option>Janela de Correr</option><option>Janela Maxim-Ar</option><option>Porta de Correr</option><option>Porta de Giro</option><option>Fachada</option><option>Outro</option></select>
+      <label for="editLocation">Local</label><input id="editLocation" required maxlength="60" value="Sala 01">
+      <button class="primary-btn full-btn" type="submit" value="save">Salvar alterações</button>
+    </form>
+  </dialog>
+
+  <dialog id="statusDialog" class="modal">
+    <form method="dialog" id="statusForm">
+      <button class="modal-close" aria-label="Fechar" value="cancel">×</button>
+      <h2>Alterar status</h2>
+      <label for="statusSelect">Status da produção</label>
+      <select id="statusSelect"><option>Em andamento</option><option>Aguardando material</option><option>Impedida</option><option>Concluída</option></select>
+      <button class="primary-btn full-btn" type="submit" value="save">Atualizar status</button>
+    </form>
+  </dialog>
+
+  <dialog id="responsibleDialog" class="modal">
+    <form method="dialog" id="responsibleForm">
+      <button class="modal-close" aria-label="Fechar" value="cancel">×</button>
+      <h2>Responsável pela produção</h2>
+      <label for="responsibleInput">Nome do responsável</label>
+      <input id="responsibleInput" required maxlength="80" value="João Silva">
+      <button class="primary-btn full-btn" type="submit" value="save">Salvar responsável</button>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

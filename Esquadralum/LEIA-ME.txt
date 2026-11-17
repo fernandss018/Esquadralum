@@ -1,0 +1,21 @@
+ESQUADRALUM — Acompanhamento de Produção
+========================================
+
+Como executar
+1. Extraia a pasta compactada.
+2. Abra o arquivo index.html em um navegador moderno (Chrome, Edge, Firefox).
+3. Não é necessário instalar nada nem iniciar um servidor.
+
+Recursos incluídos
+- Layout responsivo inspirado na imagem de referência.
+- Navegação Início e Login (login demonstrativo, sem autenticação real).
+- Edição do código, tipo e local da esquadria.
+- Seleção e avanço/retorno entre etapas.
+- Alteração do status e do responsável.
+- Registro de observações e histórico da sessão.
+- Contador de caracteres e mensagens de confirmação.
+
+Observação
+Este é um protótipo front-end. Os dados não são enviados a um servidor nem ficam salvos
+permanentemente depois que a página é fechada. Para autenticação real e armazenamento
+compartilhado, seria necessário integrar um backend.
